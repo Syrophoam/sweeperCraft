@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5C1B622D310D0000622D23 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D5C1B5F2D310D0000622D23 /* glad.c */; };
 		52CB74F72D2FC65C0095E1BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CB74F62D2FC65C0095E1BC /* OpenGL.framework */; };
 		52CB75EB2D30C4500095E1BC /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */; };
 		52CB75EE2D30C7070095E1BC /* libglfw.3.4.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -36,6 +37,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D5C1B5A2D310D0000622D23 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		0D5C1B5C2D310D0000622D23 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		0D5C1B5F2D310D0000622D23 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		52CB74E22D2FBF960095E1BC /* sweeperCraft */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sweeperCraft; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CB74F62D2FC65C0095E1BC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.4.dylib; path = ../../../../../opt/homebrew/Cellar/glfw/3.4/lib/libglfw.3.4.dylib; sourceTree = "<group>"; };
@@ -75,9 +79,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5C1B5B2D310D0000622D23 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				0D5C1B5A2D310D0000622D23 /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		0D5C1B5D2D310D0000622D23 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				0D5C1B5C2D310D0000622D23 /* khrplatform.h */,
+			);
+			path = KHR;
+			sourceTree = "<group>";
+		};
+		0D5C1B5E2D310D0000622D23 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0D5C1B5B2D310D0000622D23 /* glad */,
+				0D5C1B5D2D310D0000622D23 /* KHR */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0D5C1B602D310D0000622D23 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0D5C1B5F2D310D0000622D23 /* glad.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0D5C1B612D310D0000622D23 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				0D5C1B5E2D310D0000622D23 /* include */,
+				0D5C1B602D310D0000622D23 /* src */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
 		52CB74D92D2FBF960095E1BC = {
 			isa = PBXGroup;
 			children = (
+				0D5C1B612D310D0000622D23 /* glad */,
 				52CB74E42D2FBF960095E1BC /* sweeperCraft */,
 				52CB74EC2D2FC0B70095E1BC /* Frameworks */,
 				52CB74E32D2FBF960095E1BC /* Products */,
@@ -138,6 +185,7 @@
 				TargetAttributes = {
 					52CB74E12D2FBF960095E1BC = {
 						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
 					};
 				};
 			};
@@ -165,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5C1B622D310D0000622D23 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,34 +338,41 @@
 		52CB74EA2D2FBF960095E1BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = sweeperCraft/sweeperCraft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HJJFM492R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/opt/homebrew/include,
-					/Users/syro/glfw/deps,
+					/Users/syrofullerton/glfw/deps,
+					/Users/syrofullerton/sweeperCraft/glad/include,
 				);
 				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/glfw/3.4/lib;
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		52CB74EB2D2FBF960095E1BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = sweeperCraft/sweeperCraft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HJJFM492R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/opt/homebrew/include,
-					/Users/syro/glfw/deps,
+					/Users/syrofullerton/glfw/deps,
+					/Users/syrofullerton/sweeperCraft/glad/include,
 				);
 				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/glfw/3.4/lib;
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};

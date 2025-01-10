@@ -1,12 +1,13 @@
 
-#include "window.hpp"
+#include "Graphics.hpp"
 
 int main(){
     
-    window Window;
+    graphics Graphics;
     
-    Window.makeWindow();
-    Window.runLoop();
+    Graphics.makeWindow();
+    
+    Graphics.runLoop();
     
     
 }

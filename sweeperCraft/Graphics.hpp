@@ -8,22 +8,29 @@
 #ifndef window_hpp
 #define window_hpp
 
-#include <OpenGL/gl.h>
+#define GL_SILENCE_DEPRECATION
+ 
+//#include <OpenGL/gl.h>
+
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <thread>
 
-//#include "linmath.h"
+#include "linmath.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 
-class window {
+
+
+class graphics {
  
     
 public:
     void makeWindow();
-    void runLoop();
+    void runLoop(); 
     void close();
+    void makeTriangle();
     
     static void error_callback(int error, const char* description)
     {fprintf(stderr, "Error: %s\n", description); }
@@ -31,8 +38,18 @@ public:
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) glfwSetWindowShouldClose(window, GLFW_TRUE); }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 private:
-    GLFWwindow* window; 
+    
+    
     
 };
 
