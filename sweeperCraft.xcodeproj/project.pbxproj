@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		52CB74F72D2FC65C0095E1BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CB74F62D2FC65C0095E1BC /* OpenGL.framework */; };
+		52CB75EB2D30C4500095E1BC /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */; };
+		52CB75EE2D30C7070095E1BC /* libglfw.3.4.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		52CB74E02D2FBF960095E1BC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -16,15 +22,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		52CB75EF2D30C7070095E1BC /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				52CB75EE2D30C7070095E1BC /* libglfw.3.4.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		52CB74E22D2FBF960095E1BC /* sweeperCraft */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sweeperCraft; sourceTree = BUILT_PRODUCTS_DIR; };
+		52CB74F62D2FC65C0095E1BC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.4.dylib; path = ../../../../../opt/homebrew/Cellar/glfw/3.4/lib/libglfw.3.4.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		52CB75FA2D30CC820095E1BC /* Exceptions for "sweeperCraft" folder in "Compile Sources" phase from "sweeperCraft" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 52CB74DE2D2FBF960095E1BC /* Sources */;
+			membershipExceptions = (
+				Vert.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		52CB74E42D2FBF960095E1BC /* sweeperCraft */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				52CB75FA2D30CC820095E1BC /* Exceptions for "sweeperCraft" folder in "Compile Sources" phase from "sweeperCraft" target */,
+			);
 			path = sweeperCraft;
 			sourceTree = "<group>";
 		};
@@ -35,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CB74F72D2FC65C0095E1BC /* OpenGL.framework in Frameworks */,
+				52CB75EB2D30C4500095E1BC /* libglfw.3.4.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				52CB74E42D2FBF960095E1BC /* sweeperCraft */,
+				52CB74EC2D2FC0B70095E1BC /* Frameworks */,
 				52CB74E32D2FBF960095E1BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +92,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		52CB74EC2D2FC0B70095E1BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52CB75EA2D30C4500095E1BC /* libglfw.3.4.dylib */,
+				52CB74F62D2FC65C0095E1BC /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -67,6 +111,7 @@
 				52CB74DE2D2FBF960095E1BC /* Sources */,
 				52CB74DF2D2FBF960095E1BC /* Frameworks */,
 				52CB74E02D2FBF960095E1BC /* CopyFiles */,
+				52CB75EF2D30C7070095E1BC /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -244,9 +289,16 @@
 		52CB74EA2D2FBF960095E1BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = sweeperCraft/sweeperCraft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HJJFM492R;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/include,
+					/Users/syro/glfw/deps,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/glfw/3.4/lib;
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -254,9 +306,16 @@
 		52CB74EB2D2FBF960095E1BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = sweeperCraft/sweeperCraft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2HJJFM492R;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/include,
+					/Users/syro/glfw/deps,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/glfw/3.4/lib;
+				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
